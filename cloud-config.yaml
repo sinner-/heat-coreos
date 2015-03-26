@@ -1,0 +1,13 @@
+#cloud-config
+coreos:
+  etcd:
+    discovery: $token_url
+    addr: $private_ip:4001
+    peer-addr: $private_ip:7001
+  units:
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start
+ssh_authorized_keys:
+  - $ssh_key

@@ -148,20 +148,7 @@ resources:
       user_data_format: RAW
       user_data:
         str_replace:
-          template: |
-            #cloud-config
-            coreos:
-              etcd:
-                discovery: $token_url
-                addr: $private_ip:4001
-                peer-addr: $private_ip:7001
-              units:
-                - name: etcd.service
-                  command: start
-                - name: fleet.service
-                  command: start
-            ssh_authorized_keys:
-              - $ssh_key
+          template: { get_file: cloud-config.yaml }
           params:
             $private_ip: { get_attr: [ coreos01_internal_port, fixed_ips, 0, ip_address ] }
             $token_url: { get_param: discovery_token_url }
@@ -188,20 +175,7 @@ resources:
       user_data_format: RAW
       user_data:
         str_replace:
-          template: |
-            #cloud-config
-            coreos:
-              etcd:
-                discovery: $token_url
-                addr: $private_ip:4001
-                peer-addr: $private_ip:7001
-              units:
-                - name: etcd.service
-                  command: start
-                - name: fleet.service
-                  command: start
-            ssh_authorized_keys:
-              - $ssh_key
+          template: { get_file: cloud-config.yaml } 
           params:
             $private_ip: { get_attr: [ coreos02_internal_port, fixed_ips, 0, ip_address ] }
             $token_url: { get_param: discovery_token_url }
@@ -228,20 +202,7 @@ resources:
       user_data_format: RAW
       user_data:
         str_replace:
-          template: |
-            #cloud-config
-            coreos:
-              etcd:
-                discovery: $token_url
-                addr: $private_ip:4001
-                peer-addr: $private_ip:7001
-              units:
-                - name: etcd.service
-                  command: start
-                - name: fleet.service
-                  command: start
-            ssh_authorized_keys:
-              - $ssh_key
+          template: { get_file: cloud-config.yaml }
           params:
             $private_ip: { get_attr: [ coreos03_internal_port, fixed_ips, 0, ip_address ] }
             $token_url: { get_param: discovery_token_url }
