@@ -41,7 +41,7 @@ parameters:
     default: 87cb4819-182e-4f2d-86d2-6970c11962da
   discovery_token_url:
     type: string
-    description: wget -q https://discovery.etcd.io/new?size=3 -O discoverytoken; cat discoverytoken ; rm -f discoverytoken
+    description: Output of curl -q https://discovery.etcd.io/new?size=3
 
 resources:
 
