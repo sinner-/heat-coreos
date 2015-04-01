@@ -1,27 +1,27 @@
 heat_template_version: 2013-05-23
 
-description: HOT template to demonstrate multi-tier internal deployment using OpenStack
+description: HOT file for 3 node CoreOS cluster
 
 parameters:
   image:
     type: string
     default: CoreOS
-    description: The image to use for all nodes
+    description: Base image for CoreOS
   key_name:
     type: string
     default: coreos_key
-    description: The key name to use for all nodes
+    description: SSH public key name (change this when deploying multiple clusters)
   key_contents:
     type: string
     default: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC/EMiCSewfa6TRHM/XtJDlIlFu4cGmX0YlfGu4Y93obrOXsBFMjePnWiGVivTdJ8QH48PbAhztoAj1MT2vxj2uf/0nu8Zz0bjZh4lJyZ9jZHxnkOQ+JYxJtC+pu9GYANbQ7C3ccxmHur88gJdkZ0/auTW9aghTy+q4sDnK1rQ/Dss3euLw4lqEDfg2Ebau71jHPF1Ta1Fegf5M6PbNDP4sud0Z0xIOK1cP8kLE4uKGoeCcwGwEentJpnHH3yB2NvyY4TXBRj7hkRvSiwWEKl5+F66134Acej9qI/DlpcFi6ZkXXQBCYnLh6swJ39ozX2xFe+R0ZHrnEY/befltK4wJ sina@kumosan
-    description: The key contents to use for all nodes
+    description: SSH public key contents
   internal_network_name:
     type: string
-    description: The name of the internallication network
+    description: The name of the internal network
     default: internalnet
   internal_network_cidr:
     type: string
-    description: The CIDR of the internallication network
+    description: The CIDR of the internal network
     default: 10.210.211.0/24
   internal_gw_name:
     type: string
@@ -37,7 +37,7 @@ parameters:
     default: 8.8.4.4
   public_network_name:
     type: string
-    description: The name of the public network
+    description: The UUID of the public network
     default: 87cb4819-182e-4f2d-86d2-6970c11962da
   discovery_token_url:
     type: string
