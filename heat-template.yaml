@@ -3,6 +3,10 @@ heat_template_version: 2013-05-23
 description: HOT file for 3 node CoreOS cluster
 
 parameters:
+  flavor:
+    type: string
+    default: m1.medium
+    description: Flavor to use for CoreOS nodes
   image:
     type: string
     default: CoreOS
@@ -142,7 +146,7 @@ resources:
     properties:
       name: coreos01
       image: { get_param: image}
-      flavor: m1.medium
+      flavor: { get_param: flavor }
       networks:
         - port: { get_resource: coreos01_internal_port }
       user_data_format: RAW
@@ -169,7 +173,7 @@ resources:
     properties:
       name: coreos02
       image: { get_param: image}
-      flavor: m1.medium
+      flavor: { get_param: flavor }
       networks:
         - port: { get_resource: coreos02_internal_port }
       user_data_format: RAW
@@ -196,7 +200,7 @@ resources:
     properties:
       name: coreos03
       image: { get_param: image}
-      flavor: m1.medium
+      flavor: { get_param: flavor }
       networks:
         - port: { get_resource: coreos03_internal_port }
       user_data_format: RAW
